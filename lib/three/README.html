@@ -275,6 +275,60 @@
   </main>
 
   <footer class="text-center mt-5 py-3">
+  <div>
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+<div id="aplayer" style="position:absolute;left;0;bottom:0;"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/color-thief-don@2.0.2/src/color-thief.js"></script>
+<script>
+  const ap = new APlayer({
+    container: document.getElementById('aplayer'),
+    autoplay: true, //自动播放
+    listFolded: true, //播放列表默认折叠
+    listMaxHeight: 0, //播放列表最大高度
+    order: 'random', //音频循环顺序, 可选值: 'list', 'random'
+    loop: 'all', //音频循环播放, 可选值: 'all', 'one', 'none'
+    theme: '#e9e9e9', //切换音频时的主题色，优先级低于audio.theme
+    preload: 'none', //音频预加载，可选值: 'none', 'metadata', 'auto'
+    mutex: true, //互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
+    lrcType: 3, //歌词格式，可选值：3（LRC文件歌词格式），1（JS字符串歌词格式）
+	volume: 0.7, //默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
+    fixed: true, //吸底模式（fixed:true），迷你模式（mini:true），普通模式（注释此行或者设置fixed:false）
+    audio: [{
+        name: '需尽欢',
+        artist: '渡',
+		lrc: 'data:application/octet-stream;base64,W3RpOumhu+Wwveasol0KW2FyOua4oV0KW2FsOumhu+Wwveasol0KW2J5Ol0KW29mZnNldDowXQpbMDA6MDAuMDBd6aG75bC95qyiIC0g5rihClswMDowMC45M13or43vvJrpg5HmtakKWzAwOjAxLjg2Xeabsu+8mumDkea1qQpbMDA6MDIuNzld57yW5puy77ya5L6v5rGf5rWpClswMDowMy43Ml3mt7fpn7PvvJrpg63np4DmnqsKWzAwOjA0LjY2XeWSjOWjsO+8muWwjzUKWzAwOjA1LjU5XeW9lemfs++8mumDreengOaeqwpbMDA6MDYuNTJd5b2V6Z+z5bel5L2c5a6k77ya5peg6ZmQ5Y+v6IO9ClswMDowNy40NV3nm5HliLbvvJrpopzpmYwKWzAwOjA4LjM4Xe+8iOeJiOadg+aJgOacieacque7j+iuuOWPr+ivt+WLv+S9v+eUqO+8iQpbMDA6MjYuNzhd5Z+O5Y2XIOayoeacieS9oApbMDA6MzIuOTdd6aOO6K+tIOivieaCsuaDhQpbMDA6MzkuMDBd6Iqx6JC96L+HIOiKseW8gApbMDA6NDUuMDZd5a655oiR5LiA5Lq65ZCs5puy6YeK5oCAClswMDo1MC45OV3kurrnlJ/lvpfmhI/pobvlsL3mrKIg5LiA6aaW5oOF5q2M5Lik6Zq+ClswMDo1Ny42MF3miJHku6zkuLrkvZXkuIDliKvkuKTlrr0KWzAxOjAzLjM0XeS6uueUn+W+l+aEj+mhu+WwveasogpbMDE6MDcuMDBd5oOF5ZGz6IWQ54OCClswMToxMC4xMl3ljZfljJflho3ml6DlraTpm4HlvoDmnaUKWzAxOjE1LjgwXeS6uueUn+W+l+aEj+mhu+WwveasoiDlgKbnnIvng5/pm6jmsZ/ljZcKWzAxOjIyLjQ2XeaipumHjOaXoOS6uueUn+i/mApbMDE6MjcuODdd5Lq655Sf5b6X5oSP6aG75bC95qyiIOaXtui+sOWkquaZmgpbMDE6MzUuMDVd57u157u15rip5oOF5beu5L2g5pe25a+SClswMTo1My44M13ln47ljJcg5Y+C6YCP5oiRClswMTo1OS4yNV3mmK/kvaAg5rex5oOF5pyf6K646L+HClswMjowNi4wNV3kurrnlJ/lsJrmnInmnaXlpIQKWzAyOjA5LjE4XeWNtOWPquWJqeW9kumAlApbMDI6MTIuNDld5oiR57q156yU5LqJ5Y+W5LuO5a65ClswMjoxOC4xOV3kurrnlJ/lvpfmhI/pobvlsL3mrKIg5LiA6aaW5oOF5q2M5Lik6Zq+ClswMjoyNC44NV3miJHku6zliKvlho3kuIDmi43kuKTmlaMKWzAyOjMwLjc3XeS6uueUn+W+l+aEj+mhu+WwveasoiDmg4XlkbPohZDng4IKWzAyOjM3LjI5XeWtl+mHjOihjOmXtOiwiOemu+aVowpbMDI6NDMuMDZd5Lq655Sf5b6X5oSP6aG75bC95qyiIOWAn+aXp+S/l+S6uuS9nOS8tApbMDI6NDkuNzld5oiR5oeC5q2k5oOF5YWl5oiP5Li65oCAClswMjo1NS41M13kurrnlJ/lvpfmhI/pobvlsL3mrKIg5oKy5q2M5puy6LCD5ZSx5a6MClswMzowMi4zNF3mg4Xor53kuI3lho3nm7jkvLQKWzAzOjA3Ljk3XeS6uueUn+W+l+aEj+mhu+WwveasoiDng5/pm6jmsZ/ljZcKWzAzOjE0LjczXeaipumHjOaXoOS6uueUn+i/mApbMDM6MjAuNDhd5Lq655Sf5b6X5oSP6aG75bC95qyiIOmBh+S9oOWPr+eul+aZmgpbMDM6MjcuMzJd57u157u15rip5oOF5beu5L2g5pe25a+SClswMzozMy4yN13kurrnlJ/lvpfmhI/pobvlsL3mrKIg5oCq5oOF5raj5pWjClswMzozOS44NF3lianmiJHlm5vlraPotKrlv7XniLE=',
+        cover: 'https://y.qq.com/music/photo_new/T002R300x300M000000iCPYF47SEaC_1.jpg?max_age=2592000',
+        url: 'http://ws.stream.qqmusic.qq.com/C400002BjzWM4Jol8L.m4a?guid=991683539&vkey=E9BE9ECF21042B8CE2552989A20C0581215192276A2CDE8B1C95D27ECEBDFF6EDE124FD0930CD39B24D4A41BA11526420022AB4CCEB225B4&uin=&fromtag=66'
+      },
+      {
+        name: '一路生花',
+        artist: '温奕心',
+		lrc: 'data:application/octet-stream;base64,W3RpOuS4gOi3r+eUn+iKsV0KW2FyOua4qeWlleW/g10KW2FsOuS4gOi3r+eUn+iKsV0KW2J5OnpoYW94aW5fa2FyYWthbF0KW29mZnNldDowXQpbMDA6MDAuMDBd5LiA6Lev55Sf6IqxIC0g5rip5aWV5b+DClswMDowMi45NF3or43vvJrlrovmma7nhacKWzAwOjAzLjY1Xeabsu+8muW8oOWNmuaWhwpbMDA6MDQuNDBd57yW5puy77ya5p2O5biI54+PClswMDowNS4zMF3lvZXpn7PvvJrnlLDkuq4KWzAwOjA2LjAyXeWSjOWjsO+8muW8oOS/ruWzsApbMDA6MDYuOTNd54m55Yir6bij6LCi77ya6YOR5rWp57qz6LGGClswMDowOC4zMF3oibrkurrnu5/nrbnvvJrlhrzlmInmrKMKWzAwOjA5LjUwXVNQ77ya57mB5pif5LqS5aixClswMDoxMC4zNV3ogZTlkIjjgI7phbfni5fpn7PkuZDkurog4oCiIOaYn+abnOiuoeWIkuOAjwpbMDA6MTMuMTVdClswMDoyMi41MV3mtbfkuIrnmoTmmZrpnJ7lg4/lubTlsJHnmoTnlLsKWzAwOjI2Ljk4XemTuuWcqOWkqeepuuetiea1t+m4peihlOi1sOWugwpbMDA6MzAuNzVdClswMDozMi41MF3pgaXov5znmoTluIbku7vpo47mtarmi43miZMKWzAwOjM2LjkyXeS4uuaipuWGjeeXm+S5n+S4jeS8muWus+aAlQpbMDA6NDEuMzZdClswMDo0Mi41Nl3ov5zotbDnmoTpo47mspnljrvosIHnmoTlpKnmtq8KWzAwOjQ2Ljg4XeaYpeWkqeWPr+abvuWcqOWTqumHjOingei/h+S7lgpbMDA6NTEuMjZdClswMDo1Mi41Nl3ml7bpl7TnmoTmiYvmiprov4fkuobohLjpoooKWzAwOjU2LjgzXeS7luS7rOiwgemDveayiem7mOS4jeivtOivnQpbMDE6MDEuNjhdClswMTowNC40MV3miJHluIzmnJvorrjov4fnmoTmhL/mnJvkuIDot6/nlJ/oirEKWzAxOjA5LjQ5XeaKpOmAgemCo+aXtueahOaipuaKteaMoei/h+mjjuaymQpbMDE6MTMuOTJdClswMToxNC40OV3mjIflsJbnmoTmqLHoirHlpoLor5flhpnosIHnmoTpn7bljY4KWzAxOjE5LjQyXeeWr+eLgueahOeDreeIseWkueW4puedgOaWh+mbhQpbMDE6MjQuNDFd5oiR5biM5pyb6K646L+H55qE5oS/5pyb5LiA6Lev55Sf6IqxClswMToyOS40Ml3lsIbpgqPpm6jkuK3nmoTkurrol4/lnKjlsYvmqpDkuIsKWzAxOjMzLjg4XQpbMDE6MzQuNDdd5bKB5pyI5Zyo5Yay5Yi36YCG5rWB5rKn5qGR55qE5Zan5ZOXClswMTozOS4zM13lronpnZnnmoTlpJzmmZrkvaDlnKjmg7PosIHlkJcKWzAxOjQ0LjQ0XQpbMDI6MDcuNDZd6L+c6LWw55qE6aOO5rKZ5Y676LCB55qE5aSp5ravClswMjoxMS45NV3mmKXlpKnlj6/mm77lnKjlk6rph4zop4Hov4fku5YKWzAyOjE1Ljg3XQpbMDI6MTcuNTdd5pe26Ze055qE5omL5oqa6L+H5LqG6IS46aKKClswMjoyMS44NF3ku5bku6zosIHpg73msonpu5jkuI3or7Tor50KWzAyOjI2Ljc2XQpbMDI6MjkuMzld5oiR5biM5pyb6K646L+H55qE5oS/5pyb5LiA6Lev55Sf6IqxClswMjozNC40NF3miqTpgIHpgqPml7bnmoTmoqbmirXmjKHov4fpo47mspkKWzAyOjM4Ljg0XQpbMDI6MzkuNDVd5oyH5bCW55qE5qix6Iqx5aaC6K+X5YaZ6LCB55qE6Z+25Y2OClswMjo0NC40Ml3nlq/ni4LnmoTng63niLHlpLnluKbnnYDmlofpm4UKWzAyOjQ4Ljg1XQpbMDI6NDkuNDRd5oiR5biM5pyb6K646L+H55qE5oS/5pyb5LiA6Lev55Sf6IqxClswMjo1NC4zN13lsIbpgqPpm6jkuK3nmoTkurrol4/lnKjlsYvmqpDkuIsKWzAyOjU4Ljg1XQpbMDI6NTkuNDdd5bKB5pyI5Zyo5Yay5Yi36YCG5rWB5rKn5qGR55qE5Zan5ZOXClswMzowNC40NF3lronpnZnnmoTlpJzmmZrkvaDlnKjmg7PosIHlkJcKWzAzOjA4Ljg1XQpbMDM6MDkuMzld5oiR5biM5pyb6K646L+H55qE5oS/5pyb5LiA6Lev55Sf6IqxClswMzoxNC40MV3miqTpgIHpgqPml7bnmoTmoqbmirXmjKHov4fpo47mspkKWzAzOjE4LjkwXQpbMDM6MTkuNDNd5oyH5bCW55qE5qix6Iqx5aaC6K+X5YaZ6LCB55qE6Z+25Y2OClswMzoyNC4zNl3nlq/ni4LnmoTng63niLHlpLnluKbnnYDmlofpm4UKWzAzOjI5LjMzXeaIkeW4jOacm+iuuOi/h+eahOaEv+acm+S4gOi3r+eUn+iKsQpbMDM6MzQuMzdd5bCG6YKj6Zuo5Lit55qE5Lq66JeP5Zyo5bGL5qqQ5LiLClswMzozOC43OF0KWzAzOjM5LjQyXeWygeaciOWcqOWGsuWIt+mAhua1geayp+ahkeeahOWWp+WTlwpbMDM6NDQuNDJd5a6J6Z2Z55qE5aSc5pma5L2g5Zyo5oOz6LCB5ZCXClswMzo0OS40NV3lronpnZnnmoTlpJzmmZrkvaDlnKjmg7PosIHlkJc=',
+        cover: 'https://y.qq.com/music/photo_new/T002R300x300M000001MyK3Y47zLur_2.jpg?max_age=2592000',
+        url: 'http://ws.stream.qqmusic.qq.com/C400004AxmlM3YihD2.m4a?guid=139362153&vkey=11A2DFC519D0F27624C4908595E6DBB0C00FEBA112E97F6924678F973EDA2D4A329EFE6AA64F015EB4E5907B3DCC32341E0F09B89E41E2F0&uin=&fromtag=66'
+      }
+    ]
+  });
+
+  //实现切换音频时，根据音频的封面图片自适应主题色
+  const colorThief = new ColorThief();
+  const setTheme = (index) => {
+    if (!ap.list.audios[index].theme) {
+      colorThief.getColorAsync(ap.list.audios[index].cover, function(color) {
+        ap.theme(`rgb(${color[0]}, ${color[1]}, ${color[2]})`, index);
+      });
+    }
+  };
+  setTheme(ap.list.index);
+  ap.on('listswitch', (data) => {
+    setTheme(data.index);
+  });
+</script>
+
+
+  </div>
   <div class="footer-content">
      <a href="https://Hopedreaming.github.io" target="_blank" rel="nofollow noopener"><span>GitHub</span></a> <i> | </i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <i> | </i> <a>©2021 DENGM</a> 
   </div>
@@ -310,6 +364,7 @@
   </script>
 </div>
 
+
   
   <div class="statistics">
     
@@ -342,6 +397,7 @@
     <!-- cnzz Analytics Icon -->
     <span id="cnzz_stat_icon_1280365550" style="display: none"></span>
   
+
 </footer>
 
 
@@ -458,6 +514,8 @@
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
+
+
 
 
 </body>
